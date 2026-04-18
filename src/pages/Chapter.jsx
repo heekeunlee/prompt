@@ -50,15 +50,15 @@ const Chapter = () => {
       </div>
 
       <style>{`
-        .markdown-content h2 { margin: 3rem 0 2rem; font-size: 2.2rem; color: #6366f1; border-bottom: 1px solid rgba(99, 102, 241, 0.2); padding-bottom: 0.5rem; }
-        .markdown-content h3 { margin: 2.5rem 0 1.5rem; font-size: 1.8rem; color: #06b6d4; }
-        .markdown-content p { margin-bottom: 2rem; color: #cbd5e1; line-height: 2; font-size: 1.15rem; word-break: keep-all; overflow-wrap: break-word; }
-        .markdown-content strong { color: #fff; font-weight: 700; }
-        .markdown-content blockquote { border-left: 4px solid var(--primary); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; color: #94a3b8; }
+        .markdown-content h2 { margin: 3.5rem 0 2rem; font-size: 2.8rem; color: #6366f1; border-bottom: 2px solid rgba(99, 102, 241, 0.3); padding-bottom: 1rem; }
+        .markdown-content h3 { margin: 3rem 0 1.5rem; font-size: 2rem; color: #06b6d4; }
+        .markdown-content p { margin-bottom: 2.5rem; color: #e2e8f0; line-height: 1.9; font-size: 1.4rem; word-break: keep-all; overflow-wrap: break-word; }
+        .markdown-content strong { color: #fff; font-weight: 800; background: rgba(99, 102, 241, 0.2); padding: 0.2rem 0.5rem; border-radius: 4px; }
+        .markdown-content blockquote { border-left: 6px solid var(--primary); padding: 1.5rem 2rem; margin: 3rem 0; background: rgba(255, 255, 255, 0.03); border-radius: 0 12px 12px 0; font-size: 1.3rem; }
         @media (max-width: 768px) {
-          .markdown-content h2 { font-size: 1.8rem; }
-          .markdown-content h3 { font-size: 1.5rem; }
-          .markdown-content p { font-size: 1.05rem; }
+          .markdown-content h2 { font-size: 2rem; }
+          .markdown-content h3 { font-size: 1.6rem; }
+          .markdown-content p { font-size: 1.2rem; }
         }
       `}</style>
     </div>
