@@ -151,5 +151,4 @@ const Chapter = () => {
   );
 };
 
-export d
-
+export default Chapter;
