@@ -15,11 +15,12 @@ const Hero = () => {
             <span>AI PROMPTING MASTERCLASS</span>
           </div>
           <h1 style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', marginBottom: '1.5rem', lineHeight: 1.1 }}>
-            AI와 소통하는 <br />
-            <span className="gradient-text">가장 완벽한 방법</span>
+            R&D 엔지니어를 위한 <br />
+            <span className="gradient-text">AI 공정 파트너십</span>
           </h1>
-          <p style={{ maxWidth: '600px', margin: '0 auto 2.5rem', color: '#94a3b8', fontSize: '1.1rem' }}>
-            바이브 코딩부터 정교한 시스템 프롬프트까지. AI의 잠재력을 120% 끌어내는 프롬프트 엔지니어링의 정석을 지금 시작하세요.
+          <p style={{ maxWidth: '750px', margin: '0 auto 2.5rem', color: '#94a3b8', fontSize: '1.25rem', lineHeight: 1.6 }}>
+            반도체, 디스플레이, 이차전지 연구 현장의 리더들을 위해 설계되었습니다. <br />
+            단순 대화를 넘어 정밀 공정 데이터와 시뮬레이션을 장악하는 프롬프트 기술을 만나보세요.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
             <a href="#curriculum" className="primary-button">

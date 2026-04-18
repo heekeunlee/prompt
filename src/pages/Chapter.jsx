@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import { curriculum } from '../data/curriculum';
-import { ArrowLeft, ChevronRight } from 'lucide-react';
+import { curriculum, rdCases } from '../data/curriculum';
+import { ArrowLeft, ChevronRight, Zap, Target, AlertCircle } from 'lucide-react';
 
 const Chapter = () => {
   const { id } = useParams();
   const chapter = curriculum.find(c => c.id === parseInt(id));
+  const cases = rdCases[parseInt(id)] || [];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -17,8 +18,8 @@ const Chapter = () => {
   const nextChapter = curriculum.find(c => c.id === chapter.id + 1);
 
   return (
-    <div style={{ paddingTop: '100px' }}>
-      <div className="container" style={{ maxWidth: '800px' }}>
+    <div style={{ paddingTop: '100px', paddingBottom: '100px' }}>
+      <div className="container" style={{ maxWidth: '1000px' }}>
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#94a3b8', textDecoration: 'none', marginBottom: '2rem' }}>
           <ArrowLeft size={16} />
           <span>Back to Home</span>
@@ -26,22 +27,69 @@ const Chapter = () => {
         
         <header style={{ marginBottom: '4rem' }}>
           <div style={{ color: '#6366f1', fontWeight: 600, marginBottom: '1rem' }}>Chapter {chapter.id}</div>
-          <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>{chapter.title}</h1>
-          <p style={{ fontSize: '1.2rem', color: '#94a3b8' }}>{chapter.subtitle}</p>
+          <h1 style={{ fontSize: '3.5rem', marginBottom: '1.5rem', letterSpacing: '-0.03em' }}>{chapter.title}</h1>
+          <p style={{ fontSize: '1.4rem', color: '#94a3b8', lineHeight: 1.6 }}>{chapter.subtitle}</p>
         </header>
 
-        <div className="glass-card" style={{ padding: '3rem', marginBottom: '4rem', background: 'rgba(255,255,255,0.02)' }}>
+        <div className="glass-card" style={{ padding: '3.5rem', marginBottom: '6rem', background: 'rgba(255,255,255,0.02)' }}>
           <div className="markdown-content">
             <ReactMarkdown>{chapter.content}</ReactMarkdown>
           </div>
         </div>
 
+        {cases.length > 0 && (
+          <section style={{ marginBottom: '8rem' }}>
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem', textAlign: 'center' }}>
+              🚀 <span className="gradient-text">R&D 실전 마스터링 (Presentation)</span>
+            </h2>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+              {cases.map((item, index) => (
+                <div key={index} className="case-item animate-fade-in" style={{ animationDelay: `${index * 0.2}s` }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+                    <div style={{ background: 'var(--primary)', color: 'white', padding: '0.3rem 0.8rem', borderRadius: '4px', fontSize: '0.8rem', fontWeight: 700 }}>CASE 0{index + 1}</div>
+                    <h3 style={{ fontSize: '1.5rem', color: '#fff' }}>{item.category}</h3>
+                  </div>
+                  
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '1.5rem' }}>
+                    {/* Before Card */}
+                    <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '16px', padding: '2rem', position: 'relative' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#94a3b8', marginBottom: '1.5rem', fontSize: '0.9rem', fontWeight: 600 }}>
+                        <AlertCircle size={16} /> GENERAL PROMPT
+                      </div>
+                      <p style={{ color: '#cbd5e1', fontSize: '1.1rem', fontStyle: 'italic', lineHeight: 1.6 }}>"{item.before}"</p>
+                      <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'rgba(244, 63, 94, 0.1)', borderRadius: '8px', color: '#f43f5e', fontSize: '0.9rem' }}>
+                        위와 같이 질문할 경우, 구체적인 공정 변수 없이 일반적인 상식 수준의 대답에 그칠 확률이 높습니다.
+                      </div>
+                    </div>
+
+                    {/* After Card */}
+                    <div style={{ background: 'rgba(99, 102, 241, 0.05)', border: '1px solid var(--primary)', borderRadius: '16px', padding: '2rem', position: 'relative', boxShadow: '0 10px 30px rgba(99, 102, 241, 0.1)' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--primary)', marginBottom: '1.5rem', fontSize: '0.9rem', fontWeight: 800 }}>
+                        <Zap size={16} fill="var(--primary)" /> MASTER PROMPT
+                      </div>
+                      <p style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 500, lineHeight: 1.6 }}>{item.after}</p>
+                      
+                      <div style={{ marginTop: '2rem', borderTop: '1px solid rgba(99, 102, 241, 0.2)', paddingTop: '1.5rem' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#06b6d4', marginBottom: '0.8rem', fontSize: '0.9rem', fontWeight: 700 }}>
+                          <Target size={16} /> SUCCESS POINT
+                        </div>
+                        <p style={{ color: '#94a3b8', fontSize: '1rem', lineHeight: 1.5 }}>{item.result}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {nextChapter && (
-          <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '8rem' }}>
-            <Link to={`/chapter/${nextChapter.id}`} className="glass-card" style={{ display: 'flex', alignItems: 'center', gap: '1rem', textDecoration: 'none', color: 'white', padding: '1.5rem 2rem' }}>
-              <div>
-                <div style={{ fontSize: '0.8rem', color: '#94a3b8' }}>Next Chapter</div>
-                <div style={{ fontWeight: 700 }}>{nextChapter.title}</div>
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <Link to={`/chapter/${nextChapter.id}`} className="glass-card" style={{ display: 'flex', alignItems: 'center', gap: '1rem', textDecoration: 'none', color: 'white', padding: '1.5rem 2rem', borderRadius: '16px' }}>
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontSize: '0.8rem', color: '#94a3b8', marginBottom: '0.2rem' }}>Next Chapter</div>
+                <div style={{ fontWeight: 700, fontSize: '1.1rem' }}>{nextChapter.title}</div>
               </div>
               <ChevronRight size={24} color="#6366f1" />
             </Link>
@@ -66,3 +114,4 @@ const Chapter = () => {
 };
 
 export default Chapter;
+
