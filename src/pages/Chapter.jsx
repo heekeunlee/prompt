@@ -53,28 +53,41 @@ const Chapter = () => {
                   
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '1.5rem' }}>
                     {/* Before Card */}
-                    <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '16px', padding: '2rem', position: 'relative' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#94a3b8', marginBottom: '1.5rem', fontSize: '0.9rem', fontWeight: 600 }}>
-                        <AlertCircle size={16} /> GENERAL PROMPT
+                    <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '16px', padding: '2rem', display: 'flex', flexDirection: 'column' }}>
+                      <div style={{ flexGrow: 1 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#94a3b8', marginBottom: '1.5rem', fontSize: '0.9rem', fontWeight: 600 }}>
+                          <AlertCircle size={16} /> GENERAL PROMPT
+                        </div>
+                        <p style={{ color: '#cbd5e1', fontSize: '1.1rem', fontStyle: 'italic', lineHeight: 1.6, marginBottom: '2rem' }}>"{item.before}"</p>
                       </div>
-                      <p style={{ color: '#cbd5e1', fontSize: '1.1rem', fontStyle: 'italic', lineHeight: 1.6 }}>"{item.before}"</p>
-                      <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'rgba(244, 63, 94, 0.1)', borderRadius: '8px', color: '#f43f5e', fontSize: '0.9rem' }}>
-                        위와 같이 질문할 경우, 구체적인 공정 변수 없이 일반적인 상식 수준의 대답에 그칠 확률이 높습니다.
+                      
+                      {/* Before Result Preview */}
+                      <div style={{ background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '12px', padding: '1.5rem', marginTop: 'auto' }}>
+                        <div style={{ fontSize: '0.75rem', color: '#64748b', marginBottom: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>AI Output (General)</div>
+                        <p style={{ color: '#94a3b8', fontSize: '1rem', lineHeight: 1.5 }}>{item.beforeResult}</p>
                       </div>
                     </div>
 
                     {/* After Card */}
-                    <div style={{ background: 'rgba(99, 102, 241, 0.05)', border: '1px solid var(--primary)', borderRadius: '16px', padding: '2rem', position: 'relative', boxShadow: '0 10px 30px rgba(99, 102, 241, 0.1)' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--primary)', marginBottom: '1.5rem', fontSize: '0.9rem', fontWeight: 800 }}>
-                        <Zap size={16} fill="var(--primary)" /> MASTER PROMPT
-                      </div>
-                      <p style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 500, lineHeight: 1.6 }}>{item.after}</p>
-                      
-                      <div style={{ marginTop: '2rem', borderTop: '1px solid rgba(99, 102, 241, 0.2)', paddingTop: '1.5rem' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#06b6d4', marginBottom: '0.8rem', fontSize: '0.9rem', fontWeight: 700 }}>
-                          <Target size={16} /> SUCCESS POINT
+                    <div style={{ background: 'rgba(99, 102, 241, 0.05)', border: '1px solid var(--primary)', borderRadius: '16px', padding: '2rem', boxShadow: '0 10px 30px rgba(99, 102, 241, 0.1)', display: 'flex', flexDirection: 'column' }}>
+                      <div style={{ flexGrow: 1 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--primary)', marginBottom: '1.5rem', fontSize: '0.9rem', fontWeight: 800 }}>
+                          <Zap size={16} fill="var(--primary)" /> MASTER PROMPT
                         </div>
-                        <p style={{ color: '#94a3b8', fontSize: '1rem', lineHeight: 1.5 }}>{item.result}</p>
+                        <p style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 500, lineHeight: 1.6, marginBottom: '2rem' }}>{item.after}</p>
+                      </div>
+
+                      {/* After Result Preview */}
+                      <div style={{ background: 'rgba(99, 102, 241, 0.1)', border: '1px solid rgba(99, 102, 241, 0.3)', borderRadius: '12px', padding: '1.5rem', marginBottom: '1.5rem' }}>
+                        <div style={{ fontSize: '0.75rem', color: '#818cf8', marginBottom: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>AI Output (Master)</div>
+                        <p style={{ color: '#fff', fontSize: '1rem', lineHeight: 1.5 }}>{item.afterResult}</p>
+                      </div>
+                      
+                      <div style={{ borderTop: '1px solid rgba(99, 102, 241, 0.2)', paddingTop: '1.2rem' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#06b6d4', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: 700 }}>
+                          <Target size={14} /> SUCCESS POINT
+                        </div>
+                        <p style={{ color: '#94a3b8', fontSize: '0.95rem', lineHeight: 1.4 }}>{item.result}</p>
                       </div>
                     </div>
                   </div>
