@@ -10,9 +10,9 @@ const Hero = () => {
       </div>
       <div className="container" style={{ textAlign: 'center', zIndex: 1 }}>
         <div className="animate-fade-in">
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(99, 102, 241, 0.1)', padding: '0.5rem 1rem', borderRadius: '100px', border: '1px solid rgba(99, 102, 241, 0.2)', marginBottom: '2rem', color: '#818cf8', fontWeight: 600, fontSize: '0.9rem' }}>
-            <Zap size={16} />
-            <span>AI Prompting Masterclass</span>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', background: 'rgba(99, 102, 241, 0.15)', padding: '0.8rem 2rem', borderRadius: '100px', border: '1px solid rgba(99, 102, 241, 0.3)', marginBottom: '3rem', color: '#a5b4fc', fontWeight: 800, fontSize: '1.4rem', letterSpacing: '0.05em' }}>
+            <Zap size={24} fill="#6366f1" />
+            <span>AI PROMPTING MASTERCLASS</span>
           </div>
           <h1 style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', marginBottom: '1.5rem', lineHeight: 1.1 }}>
             AI와 소통하는 <br />
